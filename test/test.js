@@ -58,4 +58,28 @@ describe(' Unit Tests ', function(){
         });
     });
 
+
+    it('should return the julian day for 10th April 2020 as 2457163', function (done) {
+
+        var data = {
+
+            date: 10,
+            month: 4,
+            year: 2020,
+            hour: 8,
+            minute: 20,
+            timezone: 0
+        };
+
+        astronomy.getJulianDay(data, function (error, response) {
+
+            (error === null).should.be.equal(true);
+
+            response.should.not.be.equal(undefined);
+            response.should.be.a.Number;
+            response.should.be.equal(2458949.847222222);
+            done();
+        });
+    });
+
 });
