@@ -82,4 +82,25 @@ describe(' Unit Tests ', function(){
         });
     });
 
+    it('should return the planetary positions of 10 solar bodies including Moon ', function(done){
+
+        var data = {
+
+            date: 10,
+            month: 4,
+            year: 2020,
+            hour: 8,
+            minute: 20,
+            timezone: 0
+        };
+
+        astronomy.getSolarSystemBodies(data, function(error, response){
+
+            (error === null).should.be.equal(true);
+            response.should.be.a.Object;
+            done();
+        });
+
+    });
+
 });
