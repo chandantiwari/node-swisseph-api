@@ -118,12 +118,22 @@ function calcAstronomicalData(data, callback)
 
             if(!error)
             {
+                console.log(results);
                 return callback(null, results);
             }
         });
 
     });
 
+}
+
+function getAstroPositionById(id, data, callback) {
+    getJulianDay(data, function (error, jd) {
+
+        swisseph.calc_ut(jd, id, flag, function (body) {
+            callback(null, body);
+        });
+    });
 }
 
 var api = {
@@ -137,15 +147,15 @@ var api = {
     },
 
     getLunarPosition : function(data, callback){
-
+        getAstroPositionById(swisseph.MOON, data, callback);
     },
 
     getSolarPosition : function(data, callback){
-
+        getAstroPositionById(swisseph.SUN, data, callback);
     },
 
-    getBodyPositionById : function(data, callback){
-
+    getAstroPositionById: function (id, data, callback) {
+        getAstroPositionById(id, data, callback);
     }
 };
 

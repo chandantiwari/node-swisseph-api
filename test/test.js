@@ -103,4 +103,23 @@ describe(' Unit Tests ', function(){
 
     });
 
+    it('should return the sun astronomical position', function (done) {
+        var data = {
+
+            date: 10,
+            month: 4,
+            year: 2015,
+            hour: 6,
+            minute: 38,
+            timezone: 0
+        };
+
+        astronomy.getLunarPosition(data, function (error, response) {
+
+            (error === null).should.be.equal(true);
+            response.should.be.a.Object;
+            done();
+        });
+    });
+
 });
